@@ -1,5 +1,6 @@
 import React from "react";
-
+import Login from '../../components/login/login';
+import SignUp from '../../components/signup/signup';
 import './signup-login.scss';
 
 class SignIn extends React.Component {
@@ -25,7 +26,7 @@ class SignIn extends React.Component {
             mode = <div>
                 <h1>Sign Up</h1>
                 <h2>Already registered? <button onClick={this.onClickHandler}>Login</button></h2>
-                {/* <SignUp /> */}
+                <SignUp />
             </div>
         }
 
@@ -33,7 +34,7 @@ class SignIn extends React.Component {
             mode = <div>
                 <h1>Login</h1>
                 <h2>New to Memespot <button onClick={this.onClickHandler}>Sign Up</button></h2>
-                {/* <Login /> */}
+                <Login />
             </div>
         }
 
