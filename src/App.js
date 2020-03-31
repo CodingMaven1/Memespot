@@ -1,6 +1,7 @@
 import React from 'react';
-import {Switch, Route} from "react-router-dom";
+import {Switch, Route, withRouter} from "react-router-dom";
 import {auth,createUserProfileDocument} from './firebase/firebase.utils';
+import Navbar from "./components/navbar/navbar";
 import SignIn from './pages/signup-login/signup-login';
 import Memepage from './pages/memepage/memepage';
 import './App.css';
@@ -28,6 +29,7 @@ class App extends React.Component {
               ...snapshot.data()
             }
             }, () => console.log(this.state))
+            this.props.history.push('/');
         })
       }
       else{
@@ -43,9 +45,14 @@ class App extends React.Component {
   render(){
     return (
       <div className="App">
+        <Navbar currentUser={this.state.currentUser}/>
         <Switch>
           <Route exact path='/signin' component={SignIn} />
-          <Route exact path="/" component={Memepage} />
+          <Route exact path="/" render={() => {
+            return(
+              <Memepage/>
+            )
+          }} />
         </Switch>
       </div>
     );
@@ -53,4 +60,4 @@ class App extends React.Component {
 
 }
 
-export default App;
+export default withRouter(App);

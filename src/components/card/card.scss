@@ -1,0 +1,32 @@
+.Card{
+    height: 28vh;
+    width: 23vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #0C0F0A;
+    overflow-x: hidden;
+    margin-bottom: 2rem;
+
+    .Card--Img{
+        height: 20vh;
+        width: auto;
+        border-radius: 0.5rem;
+    }
+
+    .Card--Content{
+        height: 8vh;
+        width: 23vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+        .Card--Title{
+            font-size: 2.5rem;
+            color: #FE4A49;
+            font-weight: 400;
+            text-align: center;
+        }
+    }
+}

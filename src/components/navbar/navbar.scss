@@ -1,0 +1,46 @@
+.Navbar{
+    height: 12vh;
+    width: 100vw;
+    background-color: #0C0F0A;
+    position: fixed;
+    top: 0;
+    left: 0;
+    border-bottom: 1px solid #E5FFDE;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .Navbar--Title{
+        font-size: 5rem;
+        font-family: 'Monoton', cursive;
+        font-weight: 400;
+        color: #E5FFDE;
+        margin-left: 5vw;
+    }
+
+    .Navbar--Links{
+        height: 100%;
+        width: 35%;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+
+        .Navbar--NewLinks{
+            display: flex;
+            width: 70%;
+            justify-content: space-around;
+        }
+
+        .Navbar--Links--Link{
+            font-size: 3rem;
+            font-family: 'Monoton', cursive;
+            font-weight: 400;
+            color: #E5FFDE;
+            cursor: pointer;
+
+            &:hover{
+                color: #FE4A49;
+            }
+        }
+    }
+}

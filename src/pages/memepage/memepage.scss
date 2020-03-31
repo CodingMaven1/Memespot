@@ -1,5 +1,46 @@
 .Memepage{
-    min-height: 100vh;
-    width: 100vw;
+    width: 99vw;
     background-color: #0C0F0A;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding-top: 16vh;
+
+    .Memepage--Search{
+        height: 10vh;
+        width: 100vw;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        margin-bottom: 5vh;
+
+        .Memepage--SearchHeading{
+            font-size: 4rem;
+            font-weight: 400;
+            color: #E5FFDE;
+        }
+
+        .Memepage--SearchBar{
+            width: 15vw;
+            height: 5vh;
+            font-family: 'Sen', sans-serif;
+            background-color:transparent;
+            border: 1px solid #fff;
+            color: #fff;
+            outline: none;
+            padding-left: 1rem;
+            font-size: 2rem;
+            border-radius: 0.5rem;
+
+            &::placeholder{
+                font-size: 2rem;
+                color: #fff;
+            }
+        
+            &:placeholder-shown{
+                padding-left: 1rem;
+            }
+        }
+    }
 }
