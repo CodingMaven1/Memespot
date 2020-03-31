@@ -1,0 +1,69 @@
+@mixin flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Signup-login{
+    height: 100vh;
+    width: 100vw;
+    background-color: #0C0F0A;
+    @include flex;
+
+    .signup{
+        height: 60%;
+        width: 40%;
+    }
+
+    .login{
+        height: 45%;
+        width: 40%;
+    }
+
+    .Signup-login-mode{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+
+        .Signup-login-mode-title{
+            font-size: 6rem;
+            font-family: 'Monoton', cursive;
+            color: #E5FFDE;
+            font-weight: 400;
+        }
+    
+        .Signup-login-mode-toggle{
+            font-size: 3rem;
+            font-family: 'Monoton', cursive;
+            color: #FE4A49;
+            font-weight: 400;
+            display: flex;
+            align-items: center;
+        }
+    
+        .Signup-login-mode-button{
+            text-decoration: none;
+            padding: 1rem 2rem;
+            background-color: transparent;
+            margin-left: 3vw;  
+            font-size: 1.7rem;
+            font-family: 'Sen', sans-serif;
+            border-radius: 1rem;
+            border: 1px solid #E5FFDE;
+            color: #E5FFDE;
+            font-weight: 400;
+            cursor: pointer;
+            text-transform: uppercase;
+    
+            &:hover{
+                background-color: #FE4A49;
+                border-color: #FE4A49;
+            }
+    
+            &:focus{
+                outline: none;
+            }
+        }
+    }
+}

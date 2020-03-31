@@ -39,11 +39,14 @@ class Login extends React.Component {
     render(){
         return(
             <div>
-                <form onSubmit={this.onSubmitHandler}>
+                <form className="Login--Form" onSubmit={this.onSubmitHandler}>
                     <InputElement type="email" value={this.state.email} placeholder="Email" changed={event => this.onChangeHandler(event, "email")} />
                     <InputElement type="password" value={this.state.password} placeholder="Password" changed={event => this.onChangeHandler(event, "password")} />
-                    <Button type="submit">Login</Button>
-                    <Button onClick={signInWithGoogle} isGoogle>Sign in with Google</Button>
+                    <div className="Login--Form--Buttons">
+                        <Button type="submit">Login</Button>
+                        <Button onClick={signInWithGoogle} isGoogle>Sign in with Google</Button>
+                    </div>
+
                 </form>
             </div>
         )

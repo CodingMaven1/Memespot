@@ -1,0 +1,23 @@
+.Button{
+    text-decoration: none;
+    padding: 1rem 2rem;
+    background-color: transparent;
+    font-size: 1.7rem;
+    font-family: 'Sen', sans-serif;
+    border-radius: 1rem;
+    border: 1px solid #E5FFDE;
+    color: #E5FFDE;
+    font-weight: 400;
+    cursor: pointer;
+    text-transform: uppercase;
+
+    &:hover{
+        background-color: #99E1D9;
+        border-color: #99E1D9;
+        color: #0C0F0A;
+    }
+
+    &:focus{
+        outline: none;
+    }
+}

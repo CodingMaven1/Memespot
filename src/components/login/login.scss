@@ -1,0 +1,12 @@
+.Login--Form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+
+    .Login--Form--Buttons{
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+    }
+}

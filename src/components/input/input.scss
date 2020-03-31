@@ -1,0 +1,23 @@
+.Input{
+    width: 20vw;
+    height: 4vh;
+    font-family: 'Sen', sans-serif;
+    border: none;
+    background-color:transparent;
+    border-bottom: 1px solid #fff;
+    color: #fff;
+    outline: none;
+    padding-left: 1rem;
+    font-size: 1.5rem;
+    margin-bottom: 3rem;
+
+    &::placeholder{
+        font-size: 1.5rem;
+        color: #fff;
+    }
+
+    &:placeholder-shown{
+        padding-left: 1rem;
+    }
+
+}

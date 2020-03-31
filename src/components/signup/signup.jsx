@@ -54,7 +54,7 @@ class SignUp extends React.Component{
     render(){
         return(
             <div>
-                <form onSubmit={this.onSubmitHandler}>
+                <form className="Signup--Form" onSubmit={this.onSubmitHandler}>
                     <InputElement type="text" placeholder="Name" value={this.state.displayName} changed={event => this.onChangeHandler(event,"displayName")} />
                     <InputElement type="email" placeholder="Email" value={this.state.email} changed={event => this.onChangeHandler(event,"email")} />
                     <InputElement type="password" placeholder="Password" value={this.state.password} changed={event => this.onChangeHandler(event,"password")} />
