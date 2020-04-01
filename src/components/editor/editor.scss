@@ -1,0 +1,20 @@
+.Editor{
+    height: 45vh;
+    width: 65vw;
+    margin-left: 10vw;
+    margin-right: 10vw;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 5vh;
+    
+    .Editor--Img{
+        height: 40vh;
+        width: auto;
+    }
+
+    .Editor--Content{
+        display: flex;
+        flex-direction: column;
+    }
+}

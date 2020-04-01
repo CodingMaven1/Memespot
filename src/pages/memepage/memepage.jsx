@@ -1,5 +1,6 @@
 import React from "react";
 import Card from '../../components/card/card';
+import Editor from '../../components/editor/editor';
 import './memepage.scss';
 
 class Memepage extends React.Component{
@@ -9,6 +10,10 @@ class Memepage extends React.Component{
         this.state = {
             memes: [],
             search: '',
+            id: '',
+            url: '',
+            textfield: '',
+            displayMemeEditor: false
         }
     }
 
@@ -27,6 +32,19 @@ class Memepage extends React.Component{
         this.setState({search : search})
     }
 
+    onMemeHandler = (event,identity,imgurl,text) => {
+        event.preventDefault();
+        let id = this.state.id;
+        let url = this.state.url;
+        let textfield = this.state.textfield;
+        let displayMemeEditor = this.state.displayMemeEditor;
+        id = identity;
+        url = imgurl;
+        textfield = text;
+        this.setState({id : id, url:url, textfield : textfield, displayMemeEditor: !displayMemeEditor})
+        window.scrollTo(0,0);
+    }
+
     render(){
 
         let memes = this.state.memes;
@@ -42,9 +60,12 @@ class Memepage extends React.Component{
                     <input type="search" placeholder="Search" value={this.state.search} onChange={event => this.onChangeHandler(event)} className="Memepage--SearchBar" /> 
                 </div>
                 {
+                    this.state.displayMemeEditor ? <Editor url={this.state.url} id={this.state.id} options={this.state.textfield} /> : null
+                }
+                {
                     filteredmemes.map(meme => {
                         return(
-                            <Card url={meme.url} id={meme.id} height={meme.height} width={meme.width} text={meme.name} textCount={meme.box_count} />
+                            <Card url={meme.url} id={meme.id} clicked={event => this.onMemeHandler(event,meme.id,meme.url,meme.box_count)} height={meme.height} width={meme.width} text={meme.name} textCount={meme.box_count} />
                         )
                     })
                 }
