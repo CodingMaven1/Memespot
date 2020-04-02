@@ -65,7 +65,7 @@ class Memepage extends React.Component{
                 {
                     filteredmemes.map(meme => {
                         return(
-                            <Card url={meme.url} id={meme.id} clicked={event => this.onMemeHandler(event,meme.id,meme.url,meme.box_count)} height={meme.height} width={meme.width} text={meme.name} textCount={meme.box_count} />
+                            <Card url={meme.url} id={meme.id} key={meme.id} clicked={event => this.onMemeHandler(event,meme.id,meme.url,meme.box_count)} height={meme.height} width={meme.width} text={meme.name} textCount={meme.box_count} />
                         )
                     })
                 }
