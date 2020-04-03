@@ -1,5 +1,6 @@
 import React from "react";
 import Writer from '../writer/writer';
+import Input from '../input/input';
 import './editor.scss';
 
 class Editor extends React.Component{
@@ -13,7 +14,9 @@ class Editor extends React.Component{
             value : [],
             top: [],
             left: [],
-            textCount: 0
+            textCount: 0,
+            color: '',
+            size: ''
         }
     }
 
@@ -21,6 +24,12 @@ class Editor extends React.Component{
         let value = this.state.value;
         value[type] = event.target.value;
         this.setState({value : value})
+    }
+
+    onOtherInputHandler = (event,type) => {
+        let dupState = this.state;
+        dupState[type] = event.target.value;
+        this.setState({dupState})
     }
 
     onInsertText = (event) => {
@@ -32,26 +41,22 @@ class Editor extends React.Component{
     }
 
     render(){
-        let {id, url, options, value, textCount, top, left} = this.state;
-        let option = [];
+        let {id, url, value, textCount, top, left, color, size} = this.state;
         let count = [];
-        for(let i=0; i<options; i++){
-            option[i] = i
-        }
         for(let j=0; j<textCount; j++){
-            count[j] = j
+            count[j] = j;
         }
 
         return(
             <div className="Editor">
                 <div className="Editor--ImgContainer">
                     <img src={url} alt={id} className="Editor--Img" />
-                    <div className="Editor--ImgInsertText" onClick={e => this.onInsertText(e)}>
+                    <div className="Editor--ImgInsertText" onDoubleClick={e => this.onInsertText(e)}>
                         <div className="Editor--ImgInsertTextContainer">
                             {
                                 count.map((opt,index) => {
                                     return(
-                                        <Writer key={index} top={top[index]} left={left[index]} changed={event => this.onChangeHandler(event,index)} value={value[index]} />
+                                        <Writer color={color} size={size} key={index} top={top[index]} left={left[index]} changed={event => this.onChangeHandler(event,index)} value={value[index]} />
                                         )
                                 })
                             }
@@ -59,7 +64,9 @@ class Editor extends React.Component{
                     </div>
                 </div>
                 <div className="Editor--Content">
-
+                    <h1 className="Editor--ContentHeadline">Triple Click to edit the meme!</h1>
+                    <Input type="text" value={color} placeholder="Choose the color" changed={event => this.onOtherInputHandler(event, "color")} />
+                    <Input type="text" value={size} placeholder="Font Size in pixels" changed={event => this.onOtherInputHandler(event, "size")} />
                 </div>
             </div>
         )

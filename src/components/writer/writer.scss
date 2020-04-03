@@ -1,23 +1,12 @@
 .Writer{
     z-index: 10;
-    width: 10vw;
-    height: 6vh;
+    width: auto;
+    height: auto;
     font-family: 'Sen', sans-serif;
     border: none;
     background-color:transparent;
-    border-bottom: 1px solid #0C0F0A;
+    // border-bottom: 1px solid #0C0F0A;
     color: #0C0F0A;
     outline: none;
-    padding-left: 1rem;
-    font-size: 1.5rem;
-    margin-bottom: 3rem;
-
-    &::placeholder{
-        font-size: 1.5rem;
-        color: #0C0F0A;
-    }
-
-    &:placeholder-shown{
-        padding-left: 1rem;
-    }
+    font-size: 2.5rem;
 }

@@ -1,6 +1,6 @@
 .Editor{
     height: 60vh;
-    width: 65vw;
+    width: 80vw;
     margin-left: 10vw;
     margin-right: 10vw;
     display: flex;
@@ -10,7 +10,7 @@
 
     .Editor--ImgContainer{
         height: 60vh;
-        width: 45vw;
+        width: auto;
         position: relative;
 
         .Editor--Img{
@@ -35,7 +35,18 @@
     }
 
     .Editor--Content{
+        height: 40vh;
+        width: 30vw;
         display: flex;
         flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+
+        .Editor--ContentHeadline{
+            font-size: 3.5rem;
+            font-weight: 400;
+            color: #E5FFDE;
+            text-transform: capitalize;
+        }
     }
 }
