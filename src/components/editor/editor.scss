@@ -1,5 +1,5 @@
 .Editor{
-    height: 60vh;
+    min-height: 60vh;
     width: 80vw;
     margin-left: 10vw;
     margin-right: 10vw;
@@ -48,6 +48,41 @@
             font-weight: 400;
             color: #E5FFDE;
             text-transform: capitalize;
+        }
+    }
+}
+
+@media(max-width: 425px){
+    .Editor{
+        min-height: 65vh;
+        width: 90vw;
+        margin-left: 0;
+        margin-bottom: 0;
+        margin-right: 0;
+        flex-wrap: wrap;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+
+        .Editor--ImgContainer{
+            height: auto;
+            width: 90vw;
+
+            .Editor--Img{
+                height: auto;
+                width: 90vw;
+            }
+        }
+
+        .Editor--Content{
+            height: 27vh;
+            width: 70vw;
+            justify-content: space-between;
+            margin-top: 2rem;
+
+            .Editor--ContentHeadline{
+                font-size: 2.5rem;
+                text-align: center;
+            }
         }
     }
 }

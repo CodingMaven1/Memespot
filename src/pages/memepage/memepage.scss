@@ -44,3 +44,25 @@
         }
     }
 }
+
+@media (max-width: 425px){
+    .Memepage{
+        padding-top: 13vh;
+
+        .Memepage--Search{
+            height: 17vh;
+            margin-bottom: 0;
+            flex-wrap: wrap;
+
+            .Memepage--SearchHeading{
+                font-size: 2.5rem;
+                text-align: center;
+            }
+
+            .Memepage--SearchBar{
+                width: 65vw;
+                margin-bottom: 2rem;
+            }
+        }
+    }
+}

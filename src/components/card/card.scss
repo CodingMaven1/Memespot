@@ -31,3 +31,24 @@
         }
     }
 }
+
+@media (max-width :425px){
+    .Card{
+        height: 38vh;
+        width: 90vw;
+
+        .Card--Img{
+            height: 30vh;
+        }
+
+        .Card--Content{
+            height: 10vh;
+            width: 90vw;
+
+            .Card--Title{
+                font-size: 2rem;
+            }
+        }
+
+    }
+}
