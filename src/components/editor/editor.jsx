@@ -1,6 +1,9 @@
 import React from "react";
+import htmlToImage from 'html-to-image';
+import download from 'downloadjs';
 import Writer from '../writer/writer';
 import Input from '../input/input';
+import Button from '../button/button';
 import './editor.scss';
 
 class Editor extends React.Component{
@@ -18,6 +21,13 @@ class Editor extends React.Component{
             color: '',
             size: ''
         }
+    }
+
+    onClickHandler = (event) => {
+        htmlToImage.toPng(document.getElementById('meme'))
+        .then(function (dataUrl) {
+            download(dataUrl, 'meme');
+        });
     }
 
     onChangeHandler = (event,type) => {
@@ -49,7 +59,7 @@ class Editor extends React.Component{
 
         return(
             <div className="Editor">
-                <div className="Editor--ImgContainer">
+                <div id="meme" className="Editor--ImgContainer">
                     <img src={url} alt={id} className="Editor--Img" />
                     <div className="Editor--ImgInsertText" onDoubleClick={e => this.onInsertText(e)}>
                         <div className="Editor--ImgInsertTextContainer">
@@ -67,6 +77,7 @@ class Editor extends React.Component{
                     <h1 className="Editor--ContentHeadline">Triple Click to edit the meme!</h1>
                     <Input type="text" value={color} placeholder="Choose the color" changed={event => this.onOtherInputHandler(event, "color")} />
                     <Input type="text" value={size} placeholder="Font Size in pixels" changed={event => this.onOtherInputHandler(event, "size")} />
+                    <Button onClick={e => this.onClickHandler(e)} type="submit">Generate</Button>
                 </div>
             </div>
         )

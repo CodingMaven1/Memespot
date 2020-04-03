@@ -1,11 +1,18 @@
+@font-face {
+    font-family: 'Impact';
+    src: url('../../fonts/Impact.woff2') format('woff2'),
+        url('../../fonts/Impact.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 .Writer{
     z-index: 10;
     width: auto;
     height: auto;
-    font-family: 'Sen', sans-serif;
+    font-family: 'Impact';
     border: none;
     background-color:transparent;
-    // border-bottom: 1px solid #0C0F0A;
     color: #0C0F0A;
     outline: none;
     font-size: 2.5rem;
