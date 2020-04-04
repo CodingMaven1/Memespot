@@ -2,8 +2,10 @@ import React from "react";
 import Card from '../../components/card/card';
 import Editor from '../../components/editor/editor';
 import './memepage.scss';
+import Navbar from "../../components/navbar/navbar";
 
 class Memepage extends React.Component{
+
     constructor(props){
         super(props);
 
@@ -45,6 +47,22 @@ class Memepage extends React.Component{
         window.scrollTo(0,0);
     }
 
+    onImageUploadHandler = (e) => {
+    
+        let reader = new FileReader();
+        let file = e.target.files[0];
+    
+        reader.onload = () => {
+          this.setState({
+            file: file,
+            url: reader.result,
+            displayMemeEditor: true
+          }, () => console.log(this.state));
+        }
+    
+        reader.readAsDataURL(file)
+      }
+
     render(){
 
         let memes = this.state.memes;
@@ -55,12 +73,13 @@ class Memepage extends React.Component{
         
         return(
             <div className="Memepage">
+                <Navbar clicked={e => this.onImageUploadHandler(e)} />
                 <div className="Memepage--Search">
                     <h1 className="Memepage--SearchHeading">Generate memes with these trending templates!</h1>
                     <input type="search" placeholder="Search" value={this.state.search} onChange={event => this.onChangeHandler(event)} className="Memepage--SearchBar" /> 
                 </div>
                 {
-                    this.state.displayMemeEditor ? <Editor url={this.state.url} id={this.state.id} options={this.state.textfield} /> : null
+                    this.state.displayMemeEditor ? <Editor key={this.state.url} url={this.state.url} id={this.state.id} options={this.state.textfield} /> : null
                 }
                 {
                     filteredmemes.map(meme => {

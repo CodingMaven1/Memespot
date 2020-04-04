@@ -21,42 +21,58 @@
 
     .Navbar--Links{
         height: 100%;
-        width: 35%;
+        width: 15%;
         display: flex;
         align-items: center;
         justify-content: space-around;
 
-        .Navbar--NewLinks{
-            display: flex;
-            width: 70%;
-            justify-content: space-around;
+        .Navbar--Links--Link:focus{
+            outline: none;
         }
 
-        .Navbar--Links--Link{
-            font-size: 3rem;
+        .Navbar--Links--Link::-webkit-file-upload-button {
+            visibility: hidden;
+        }
+          .Navbar--Links--Link::before {
+            content: 'Upload';
+            display: inline-block;
             font-family: 'Monoton', cursive;
-            font-weight: 400;
             color: #E5FFDE;
+            border: 1px solid #E5FFDE;
+            border-radius: 0.5rem;
+            padding: 1rem 2rem;
+            outline: none;
+            -webkit-user-select: none;
             cursor: pointer;
+            font-size: 2.7rem;
+            margin-top: 2rem;
+            text-transform: uppercase;
+          }
+          .Navbar--Links--Link:hover::before {
+            border-color: #FE4A49;
+            background-color: #FE4A49;
+          }
 
-            &:hover{
-                color: #FE4A49;
-            }
-        }
     }
 }
 
 @media (max-width: 425px){
     .Navbar{
-        justify-content: center;
 
         .Navbar--Title{
-            font-size: 4rem;
-            margin-left: 0;
+            font-size: 3rem;
+            margin-left: 4vw;
         }
 
         .Navbar--Links{
-            width: 0;
+            width: 30%;
+
+            .Navbar--Links--Link::before {
+                font-size: 1.7rem;
+                margin-top: 0;
+                margin-left: 5rem;
+                font-family: 'Sen', sans-serif;
+            }
         }
     }
 
