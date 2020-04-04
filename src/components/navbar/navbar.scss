@@ -45,3 +45,19 @@
         }
     }
 }
+
+@media (max-width: 425px){
+    .Navbar{
+        justify-content: center;
+
+        .Navbar--Title{
+            font-size: 4rem;
+            margin-left: 0;
+        }
+
+        .Navbar--Links{
+            width: 0;
+        }
+    }
+
+}
