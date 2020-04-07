@@ -11,6 +11,7 @@
     "html-to-image": "^0.1.1",
     "node-sass": "^4.13.1",
     "react": "^16.13.1",
+    "react-color": "^2.18.0",
     "react-dom": "^16.13.1",
     "react-images-upload": "^1.2.8",
     "react-router-dom": "^5.1.2",

@@ -4,6 +4,7 @@ import download from 'downloadjs';
 import Writer from '../writer/writer';
 import Input from '../input/input';
 import Button from '../button/button';
+import { TwitterPicker } from 'react-color';
 import './editor.scss';
 
 class Editor extends React.Component{
@@ -42,6 +43,12 @@ class Editor extends React.Component{
         this.setState({dupState})
     }
 
+    handleColorSwatch = (color) => {
+        let statecolor = this.state.color;
+        statecolor = color.hex;
+        this.setState({color: statecolor})
+    }
+
     onInsertText = (event) => {
         let {left, top, textCount} = this.state;
         left[textCount] = event.nativeEvent.offsetX;
@@ -75,7 +82,7 @@ class Editor extends React.Component{
                 </div>
                 <div className="Editor--Content">
                     <h1 className="Editor--ContentHeadline">Triple Click to edit the meme!</h1>
-                    <Input type="text" value={color} placeholder="Choose the color" changed={event => this.onOtherInputHandler(event, "color")} />
+                    <TwitterPicker triangle="hide" onChangeComplete={this.handleColorSwatch}/>
                     <Input type="text" value={size} placeholder="Font Size in pixels" changed={event => this.onOtherInputHandler(event, "size")} />
                     <Button onClick={e => this.onClickHandler(e)} type="submit">Generate</Button>
                 </div>
