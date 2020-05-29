@@ -10,10 +10,10 @@ To edit the template just tap three times on the photo!
 
 ### Web View:
 
-![](src/assets/webview.png)
-(https://drive.google.com/open?id=1okKvzF8IkKFvSiJvGCpPPS3kBEqdTfKH)
+![](src/assets/webview1.png)
+![](src/assets/webview2.png)
 
 ### Mobile View
 
-(https://drive.google.com/open?id=1Fk7BvHGr2IalsW7_pKReKV5xJyweoYF-)
-(https://drive.google.com/open?id=1Fm0E8UWsrfRyur8kXsZR4fnjDD1pt9NL)
+![](src/assets/Mobview1.jpg)
+![](src/assets/Mobview2.jpg)
