@@ -10,7 +10,7 @@ To edit the template just tap three times on the photo!
 
 ### Web View:
 
-(https://drive.google.com/open?id=1oPr9ZnO6ukwwZh9CkklDmGMZ4i3n1bKv)
+<img src="https://drive.google.com/open?id=1oPr9ZnO6ukwwZh9CkklDmGMZ4i3n1bKv" />
 (https://drive.google.com/open?id=1okKvzF8IkKFvSiJvGCpPPS3kBEqdTfKH)
 
 ### Mobile View
