@@ -15,5 +15,5 @@ To edit the template just tap three times on the photo!
 
 ### Mobile View
 
-![](src/assets/Mobview1.jpg)
-![](src/assets/Mobview2.jpg)
+<img src="src/assets/Mobview1.jpg" width="450" >
+<img src="src/assets/Mobview2.jpg" width="450" >
