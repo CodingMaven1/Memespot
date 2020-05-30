@@ -24,7 +24,7 @@ class Memepage extends React.Component{
         .then(res => res.json())
         .then(res => {
             let memes = res.data.memes;
-            this.setState({memes : memes}, () => console.log(this.state))
+            this.setState({memes : memes})
         })
     }
 
