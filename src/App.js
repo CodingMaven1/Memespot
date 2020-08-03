@@ -17,7 +17,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <Switch>
-          <Route exact path="/" render={() => {
+          <Route exact path="/Memespot" render={() => {
             return(
               <Memepage />
             )
