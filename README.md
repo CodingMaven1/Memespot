@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="250" height="auto" src="src/assets/logo192.png">
+  <img width="250" height="auto" src="src/assets/logo192.svg">
 </p>
 
 ## An online Mememaker
@@ -17,7 +17,7 @@ Then download the meme on the go!
 [![Netlify Status](https://api.netlify.com/api/v1/badges/8739a03d-4bd1-4db7-8af0-6f6bbe369927/deploy-status)](https://app.netlify.com/sites/memespot/deploys)
 
 
-## Web View:
+## Web View
 
 ![](src/assets/webview1.png)
 
