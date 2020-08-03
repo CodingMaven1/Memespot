@@ -1,4 +1,6 @@
-# Memespot
+<p align="center">
+  <img width="460" height="auto" src="src/assets/memespotlogo.png">
+</p>
 
 ### An online Mememaker
 
