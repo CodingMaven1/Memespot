@@ -6,7 +6,7 @@ You can choose any of the trending templates or even upload your own photo.
 You can even choose the color and font size.
 To edit the template just tap three times on the photo!
 
-### Deployed: https://memespot.netlify.com
+[![Netlify Status](https://api.netlify.com/api/v1/badges/8739a03d-4bd1-4db7-8af0-6f6bbe369927/deploy-status)](https://app.netlify.com/sites/memespot/deploys)
 
 ### Web View:
 
