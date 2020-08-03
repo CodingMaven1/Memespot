@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/Memespot/static/css/main.293f971d.chunk.css",
-    "main.js": "/Memespot/static/js/main.c7151a78.chunk.js",
-    "main.js.map": "/Memespot/static/js/main.c7151a78.chunk.js.map",
+    "main.js": "/Memespot/static/js/main.bef1df69.chunk.js",
+    "main.js.map": "/Memespot/static/js/main.bef1df69.chunk.js.map",
     "runtime-main.js": "/Memespot/static/js/runtime-main.3d5e36bf.js",
     "runtime-main.js.map": "/Memespot/static/js/runtime-main.3d5e36bf.js.map",
     "static/js/2.bc091363.chunk.js": "/Memespot/static/js/2.bc091363.chunk.js",
     "static/js/2.bc091363.chunk.js.map": "/Memespot/static/js/2.bc091363.chunk.js.map",
     "index.html": "/Memespot/index.html",
-    "precache-manifest.2d36a85ac0fb7ec80ccc169bbb16daea.js": "/Memespot/precache-manifest.2d36a85ac0fb7ec80ccc169bbb16daea.js",
+    "precache-manifest.443b0186058a322cf82e868af0cebcf7.js": "/Memespot/precache-manifest.443b0186058a322cf82e868af0cebcf7.js",
     "service-worker.js": "/Memespot/service-worker.js",
     "static/css/main.293f971d.chunk.css.map": "/Memespot/static/css/main.293f971d.chunk.css.map",
     "static/js/2.bc091363.chunk.js.LICENSE.txt": "/Memespot/static/js/2.bc091363.chunk.js.LICENSE.txt",
@@ -18,6 +18,6 @@
     "static/js/runtime-main.3d5e36bf.js",
     "static/js/2.bc091363.chunk.js",
     "static/css/main.293f971d.chunk.css",
-    "static/js/main.c7151a78.chunk.js"
+    "static/js/main.bef1df69.chunk.js"
   ]
 }
