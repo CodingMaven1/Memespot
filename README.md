@@ -13,6 +13,14 @@ You can even choose the color and font size.
 To edit the template just tap three times on the photo!
 Then download the meme on the go!
 
+
+## Installation
+
+```bash
+docker-compose up
+```
+
+
 ## Build
 [![Netlify Status](https://api.netlify.com/api/v1/badges/8739a03d-4bd1-4db7-8af0-6f6bbe369927/deploy-status)](https://app.netlify.com/sites/memespot/deploys)
 
