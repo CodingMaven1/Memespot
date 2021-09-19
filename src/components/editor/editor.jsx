@@ -71,7 +71,7 @@ class Editor extends React.Component{
                                 count.map(index => {
                                     return(
                                         <Writer color={color} size={size} key={index} top={top[index]} left={left[index]} changed={event => this.onChangeHandler(event,index)} value={value[index]} />
-                                        )
+                                    )
                                 })
                             }
                         </div>

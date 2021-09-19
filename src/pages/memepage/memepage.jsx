@@ -68,9 +68,9 @@ class Memepage extends React.Component{
                         <Editor key={this.state.url} url={this.state.url} id={this.state.id} /> : null
                 }
                 {
-                    filteredmemes.map(meme => {
+                    filteredmemes.map((meme, idx) => {
                         return(
-                            <Card url={meme.url} id={meme.id} key={meme.id} clicked={() => this.onMemeHandler(meme.id, meme.url)} height={meme.height} width={meme.width} text={meme.name} textCount={meme.box_count} />
+                            <Card meme={meme} key={idx} clicked={() => this.onMemeHandler(meme.id, meme.url)} />
                         )
                     })
                 }

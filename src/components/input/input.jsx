@@ -3,8 +3,9 @@ import React from "react";
 import './input.scss';
 
 const InputElement = (props) => {
+    let { changed, type, placeholder, value } = props;
     return(
-        <input className="Input" onChange={props.changed} type={props.type} placeholder={props.placeholder} value={props.value} />
+        <input className="Input" onChange={changed} type={type} placeholder={placeholder} value={value} />
     )
 }
 
