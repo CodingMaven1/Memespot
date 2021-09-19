@@ -3,9 +3,9 @@ import React from "react";
 import './button.scss';
 
 const Button = (props) => {
-    let { isGoogle, onClick, type, children } = props;
+    let { isGoogle, onClick, children } = props;
     return(
-        <button className={`${isGoogle ? "Button--Google" : ''} Button`} onClick={onClick} type={type}>
+        <button className={`${isGoogle ? "Button--Google" : ''} Button`} onClick={onClick}>
             {children}
         </button>
     )

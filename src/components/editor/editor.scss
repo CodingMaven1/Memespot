@@ -6,7 +6,7 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    margin-bottom: 5vh;
+    margin-bottom: 10vh;
 
     .Editor--ImgContainer{
         height: 60vh;
@@ -38,7 +38,7 @@
     }
 
     .Editor--Content{
-        height: 45vh;
+        height: 40vh;
         width: 30vw;
         display: flex;
         flex-direction: column;
@@ -46,7 +46,7 @@
         justify-content: space-around;
 
         .Editor--ContentHeadline{
-            font-size: 3.5rem;
+            font-size: 2.5rem !important;
             font-weight: 400;
             color: #E5FFDE;
             text-transform: capitalize;
@@ -63,7 +63,7 @@
         margin-right: 0;
         flex-wrap: wrap;
         margin-top: 2rem;
-        margin-bottom: 2rem;
+        margin-bottom: 5rem;
 
         .Editor--ImgContainer{
             height: auto;
@@ -82,7 +82,7 @@
             margin-top: 2rem;
 
             .Editor--ContentHeadline{
-                font-size: 2.5rem;
+                font-size: 2rem !important;
                 text-align: center;
             }
         }

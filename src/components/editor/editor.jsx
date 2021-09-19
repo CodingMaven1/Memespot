@@ -81,7 +81,7 @@ class Editor extends React.Component{
                     <h1 className="Editor--ContentHeadline">Triple Click to edit the meme!</h1>
                     <TwitterPicker triangle="hide" onChangeComplete={this.handleColorSwatch}/>
                     <Input type="text" value={size} placeholder="Font Size in pixels" changed={event => this.onOtherInputHandler(event, "size")} />
-                    <Button onClick={e => this.onClickHandler(e)} type="submit">Generate</Button>
+                    <Button onClick={e => this.onClickHandler(e)}>Generate</Button>
                 </div>
             </div>
         )
