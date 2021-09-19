@@ -10,7 +10,6 @@ import './editor.scss';
 class Editor extends React.Component{
 
     state = {
-        value : [],
         top: [],
         left: [],
         textCount: 0,
@@ -25,16 +24,9 @@ class Editor extends React.Component{
         });
     }
 
-    onChangeHandler = (event,type) => {
-        let dupvalue = [...this.state.value];
-        dupvalue[type] = event.target.value;
-        this.setState({value : dupvalue})
-    }
-
-    onOtherInputHandler = (event,type) => {
-        let dupState = {...this.state};
-        dupState[type] = event.target.value;
-        this.setState({dupState})
+    onSizeHandler = (event) => {
+        event.preventDefault();
+        this.setState({ size: event.target.value })
     }
 
     handleColorSwatch = (color) => {
@@ -53,7 +45,7 @@ class Editor extends React.Component{
     }
 
     render(){
-        let { value, textCount, top, left, color, size } = this.state;
+        let { textCount, top, left, color, size } = this.state;
         let { url, id } = this.props;
         let count = [];
 
@@ -68,9 +60,9 @@ class Editor extends React.Component{
                     <div className="Editor--ImgInsertText" onDoubleClick={e => this.onInsertText(e)}>
                         <div className="Editor--ImgInsertTextContainer">
                             {
-                                count.map(index => {
+                                count.map(id => {
                                     return(
-                                        <Writer color={color} size={size} key={index} top={top[index]} left={left[index]} changed={event => this.onChangeHandler(event,index)} value={value[index]} />
+                                        <Writer color={color} size={size} current={id} key={id} top={top[id]} left={left[id]} />
                                     )
                                 })
                             }
@@ -80,7 +72,7 @@ class Editor extends React.Component{
                 <div className="Editor--Content">
                     <h1 className="Editor--ContentHeadline">Triple Click to edit the meme!</h1>
                     <TwitterPicker triangle="hide" onChangeComplete={this.handleColorSwatch}/>
-                    <Input type="text" value={size} placeholder="Font Size in pixels" changed={event => this.onOtherInputHandler(event, "size")} />
+                    <Input type="text" value={size} placeholder="Font Size in pixels" changed={this.onSizeHandler} />
                     <Button onClick={e => this.onClickHandler(e)}>Generate</Button>
                 </div>
             </div>

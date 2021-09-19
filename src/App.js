@@ -5,15 +5,8 @@ import './App.css';
 
 class App extends React.Component {
 
-  constructor(){
-    super();
-    this.state = {
-
-    }
-  }
-
-
   render(){
+    console.log(document.activeElement)
     return (
       <div className="App">
         <Switch>
