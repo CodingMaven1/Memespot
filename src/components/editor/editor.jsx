@@ -1,10 +1,12 @@
 import React from "react";
 import htmlToImage from 'html-to-image';
 import download from 'downloadjs';
+import { TwitterPicker } from 'react-color';
+
 import Writer from '../writer/writer';
 import Input from '../input/input';
 import Button from '../button/button';
-import { TwitterPicker } from 'react-color';
+
 import './editor.scss';
 
 class Editor extends React.Component{
