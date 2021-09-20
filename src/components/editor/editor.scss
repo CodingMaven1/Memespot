@@ -38,18 +38,40 @@
     }
 
     .Editor--Content{
-        height: 40vh;
+        height: auto;
         width: 30vw;
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: space-around;
 
         .Editor--ContentHeadline{
             font-size: 2.5rem !important;
             font-weight: 400;
             color: #E5FFDE;
             text-transform: capitalize;
+        }
+
+        .Editor--ContentTools {
+            display: flex;
+            background-color: #FFF;
+            border-radius: 4px;
+            margin: 2rem 0;
+
+            .Editor--ContentToolType {
+                padding: 10px 20px;
+                cursor: pointer;
+                font-size: 15px;
+
+                &:hover {
+                    background-color: #FE4A49;
+                    color: #fff;
+                }
+            }
+
+            .Editor--ContentToolActive {
+                background-color: #FE4A49;
+                color: #fff;
+            }
         }
     }
 }
@@ -76,9 +98,7 @@
         }
 
         .Editor--Content{
-            height: 40vh;
             width: 70vw;
-            justify-content: space-between;
             margin-top: 2rem;
 
             .Editor--ContentHeadline{

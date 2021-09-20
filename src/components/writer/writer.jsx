@@ -62,7 +62,7 @@ class Writer extends React.Component {
                 <textarea className="Writer--Area" id={`Writer--AreaField${current}`} value={value} 
                     onChange={this.onTextHandler} onMouseUp={() => this.onDeactivateHandler("pressed")}
                     onTouchCancel={() => this.onDeactivateHandler("pressed")}
-                    type="text" style={{ fontSize: `${size + "px"}`, color: color, top: top, left: left}} />
+                    type="text" style={{ fontSize: `${size + "px"}`, color: color}} />
                 {
                     (( focused || hovered ) && value !== '' ) ? 
                         <div className="Writer--Tools" onMouseEnter={() => this.onActivateHandler("hovered")} 

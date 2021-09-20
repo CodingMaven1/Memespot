@@ -16,7 +16,8 @@ class Editor extends React.Component{
         left: [],
         textCount: 0,
         color: '',
-        size: ''
+        size: '',
+        active: 'color'
     }
 
     onClickHandler = (event) => {
@@ -29,6 +30,10 @@ class Editor extends React.Component{
     onSizeHandler = (event) => {
         event.preventDefault();
         this.setState({ size: event.target.value })
+    }
+
+    onToolHandler = (type) => {
+        this.setState({ active: type })
     }
 
     handleColorSwatch = (color) => {
@@ -47,7 +52,7 @@ class Editor extends React.Component{
     }
 
     render(){
-        let { textCount, top, left, color, size } = this.state;
+        let { textCount, top, left, color, size, active } = this.state;
         let { url, id } = this.props;
         let count = [];
 
@@ -73,8 +78,28 @@ class Editor extends React.Component{
                 </div>
                 <div className="Editor--Content">
                     <h1 className="Editor--ContentHeadline">Triple Click to edit the meme!</h1>
-                    <TwitterPicker triangle="hide" onChangeComplete={this.handleColorSwatch}/>
-                    <Input type="text" value={size} placeholder="Font Size in pixels" changed={this.onSizeHandler} />
+                    <div className="Editor--ContentTools">
+                        <div className={`Editor--ContentToolType ${active === 'color' ? 'Editor--ContentToolActive' : ''}`}
+                            onClick={() => this.onToolHandler('color')}>
+                            Color
+                        </div>
+                        <div className={`Editor--ContentToolType ${active === 'font' ? 'Editor--ContentToolActive' : ''}`}
+                            onClick={() => this.onToolHandler('font')}>
+                            Font
+                        </div>
+                        <div className={`Editor--ContentToolType ${active === 'style' ? 'Editor--ContentToolActive' : ''}`}
+                            onClick={() => this.onToolHandler('style')}>
+                            Style
+                        </div>
+                    </div>
+                    <div style={{marginBottom: '2rem'}}>
+                        {
+                            active === 'color' ? 
+                                <TwitterPicker triangle="hide" color={color} onChangeComplete={this.handleColorSwatch}/> :
+                                active === 'style' ? 
+                                    <Input type="text" value={size} placeholder="Font Size in pixels" changed={this.onSizeHandler} /> : null
+                        }
+                    </div>
                     <Button onClick={e => this.onClickHandler(e)}>Generate</Button>
                 </div>
             </div>
