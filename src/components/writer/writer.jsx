@@ -11,19 +11,24 @@ class Writer extends React.Component {
     state = {
         value: '',
         focused: false,
-        hovered: false
+        hovered: false,
+        pressed: false
     }
 
     onTextHandler = (event) => {
         this.setState({ value : event.target.value })
     }
 
-    onFocusHandler = () => {
-        this.setState({ focused: true })
+    onActivateHandler = (type) => {
+        let dupstate = {...this.state};
+        dupstate[type] = true;
+        this.setState(dupstate);
     }
 
-    onBlurHandler = () => {
-        this.setState({ focused: false })
+    onDeactivateHandler = (type) => {
+        let dupstate = {...this.state};
+        dupstate[type] = false;
+        this.setState(dupstate);
     }
 
     onDeleteHandler = () => {
@@ -33,12 +38,19 @@ class Writer extends React.Component {
         currElement.remove();
     }
 
-    onMouseEnterHandler = () => {
-        this.setState({ hovered: true })
-    }
+    onRotateHandler = (event) => {
+        let { pressed } = this.state;
+        let { current } = this.props;
 
-    onMouseLeaveHandler = () => {
-        this.setState({ hovered: false })
+        if (pressed) {
+            let currElement = document.getElementById(`Writer${current}`);
+            let {left, top, width, height} = currElement.getBoundingClientRect();
+            let x = left + width / 2;
+            let y = top + height / 2;
+    
+            const angle = Math.atan2(event.clientY - y, event.clientX - x);
+            currElement.style.transform = `rotate(${angle}rad)`;
+        }
     }
 
     render() {
@@ -46,16 +58,21 @@ class Writer extends React.Component {
         let { size, color, top, left, current } = this.props;
 
         return (
-            <div className="Writer" style={{ top: top, left: left }} onFocus={this.onFocusHandler} onBlur={this.onBlurHandler} >
-                <textarea className="Writer--Area" id={`Writer--AreaField${current}`} value={value} onChange={this.onTextHandler} 
+            <div className="Writer" id={`Writer${current}`} style={{ top: top, left: left }} onMouseMove={this.onRotateHandler} 
+                onFocus={() => this.onActivateHandler("focused")} onBlur={() => this.onDeactivateHandler("focused")} >
+                <textarea className="Writer--Area" id={`Writer--AreaField${current}`} value={value} 
+                    onChange={this.onTextHandler} onMouseDown={() => this.onDeactivateHandler("pressed")}
                     type="text" style={{ fontSize: `${size + "px"}`, color: color, top: top, left: left}} />
                 {
                     (( focused || hovered ) && value !== '' ) ? 
-                        <div className="Writer--Tools" onMouseEnter={this.onMouseEnterHandler} onMouseLeave={this.onMouseLeaveHandler} >
+                        <div className="Writer--Tools" onMouseEnter={() => this.onActivateHandler("hovered")} 
+                            onMouseLeave={() => this.onDeactivateHandler("hovered")} >
                             <img src={movelogo} className="Writer--ToolsLogo" alt="move" />
-                            <img src={rotatelogo} className="Writer--ToolsLogo" alt="move" />
+                            <img src={rotatelogo} className="Writer--ToolsLogo" alt="move" draggable={false}
+                                onMouseDown={() => this.onActivateHandler("pressed")} 
+                                onMouseUp={() => this.onDeactivateHandler("pressed")} />
                             <img src={deletelogo} className="Writer--ToolsLogo" alt="move" onClick={this.onDeleteHandler} />
-                            <img src={expandlogo} className="Writer--ToolsLogo" alt="move" />
+                            <img src={expandlogo} className="Writer--ToolsLogo" alt="move" style={{ marginRight: '10px' }} />
                         </div> : null
                 }
             </div>
