@@ -6,17 +6,13 @@ import Navbar from "../../components/navbar/navbar";
 
 class Memepage extends React.Component{
 
-    constructor(props){
-        super(props);
 
-        this.state = {
-            memes: [],
-            search: '',
-            id: '',
-            url: '',
-            textfield: '',
-            displayMemeEditor: false
-        }
+    state = {
+        memes: [],
+        search: '',
+        id: '',
+        url: '',
+        displayMemeEditor: false
     }
 
     componentDidMount(){
@@ -29,26 +25,16 @@ class Memepage extends React.Component{
     }
 
     onChangeHandler = (event) => {
-        let search = this.state.search;
-        search = event.target.value;
-        this.setState({search : search})
+        let value = event.target.value;
+        this.setState({search : value})
     }
 
-    onMemeHandler = (event,identity,imgurl,text) => {
-        event.preventDefault();
-        let id = this.state.id;
-        let url = this.state.url;
-        let textfield = this.state.textfield;
-        let displayMemeEditor = this.state.displayMemeEditor;
-        id = identity;
-        url = imgurl;
-        textfield = text;
-        this.setState({id : id, url:url, textfield : textfield, displayMemeEditor: !displayMemeEditor})
+    onMemeHandler = (identity, imgurl) => {
+        this.setState({ id : identity, url: imgurl, displayMemeEditor: true })
         window.scrollTo(0,0);
     }
 
     onImageUploadHandler = (e) => {
-    
         let reader = new FileReader();
         let file = e.target.files[0];
     
@@ -65,8 +51,7 @@ class Memepage extends React.Component{
 
     render(){
 
-        let memes = this.state.memes;
-        let search = this.state.search;
+        let { memes, search} = this.state;
         let filteredmemes = memes.filter(meme => 
             meme.name.toUpperCase().includes(search.toUpperCase())
         )
@@ -79,12 +64,13 @@ class Memepage extends React.Component{
                     <input type="search" placeholder="Search" value={this.state.search} onChange={event => this.onChangeHandler(event)} className="Memepage--SearchBar" /> 
                 </div>
                 {
-                    this.state.displayMemeEditor ? <Editor key={this.state.url} url={this.state.url} id={this.state.id} options={this.state.textfield} /> : null
+                    this.state.displayMemeEditor ? 
+                        <Editor key={this.state.url} url={this.state.url} id={this.state.id} /> : null
                 }
                 {
-                    filteredmemes.map(meme => {
+                    filteredmemes.map((meme, idx) => {
                         return(
-                            <Card url={meme.url} id={meme.id} key={meme.id} clicked={event => this.onMemeHandler(event,meme.id,meme.url,meme.box_count)} height={meme.height} width={meme.width} text={meme.name} textCount={meme.box_count} />
+                            <Card meme={meme} key={idx} clicked={() => this.onMemeHandler(meme.id, meme.url)} />
                         )
                     })
                 }

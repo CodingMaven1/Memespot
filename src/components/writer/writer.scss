@@ -8,12 +8,34 @@
 
 .Writer{
     z-index: 10;
-    width: auto;
-    height: auto;
-    font-family: 'Impact';
-    border: none;
-    background-color:transparent;
-    color: #0C0F0A;
-    outline: none;
-    font-size: 2.5rem;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+    .Writer--Area{
+        width: 200px;
+        height: 100px;
+        font-family: 'Impact';
+        border: none;
+        background-color:transparent;
+        color: #0C0F0A;
+        outline: none;
+        font-size: 2.5rem;
+    }
+
+    .Writer--Tools{
+        width: auto;
+        height: 30px;
+        background-color: #fff;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+
+        .Writer--ToolsLogo {
+            height: 20px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+    }
 }

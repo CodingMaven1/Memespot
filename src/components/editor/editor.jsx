@@ -1,27 +1,22 @@
 import React from "react";
 import htmlToImage from 'html-to-image';
 import download from 'downloadjs';
+import { TwitterPicker } from 'react-color';
+
 import Writer from '../writer/writer';
 import Input from '../input/input';
 import Button from '../button/button';
-import { TwitterPicker } from 'react-color';
+
 import './editor.scss';
 
 class Editor extends React.Component{
-    constructor(props){
-        super(props);
 
-        this.state = {
-            url: this.props.url,
-            id: this.props.id,
-            options: this.props.options,
-            value : [],
-            top: [],
-            left: [],
-            textCount: 0,
-            color: '',
-            size: ''
-        }
+    state = {
+        top: [],
+        left: [],
+        textCount: 0,
+        color: '',
+        size: ''
     }
 
     onClickHandler = (event) => {
@@ -31,35 +26,31 @@ class Editor extends React.Component{
         });
     }
 
-    onChangeHandler = (event,type) => {
-        let value = this.state.value;
-        value[type] = event.target.value;
-        this.setState({value : value})
-    }
-
-    onOtherInputHandler = (event,type) => {
-        let dupState = this.state;
-        dupState[type] = event.target.value;
-        this.setState({dupState})
+    onSizeHandler = (event) => {
+        event.preventDefault();
+        this.setState({ size: event.target.value })
     }
 
     handleColorSwatch = (color) => {
-        let statecolor = this.state.color;
-        statecolor = color.hex;
+        let statecolor = color.hex;
         this.setState({color: statecolor})
     }
 
     onInsertText = (event) => {
-        let {left, top, textCount} = this.state;
-        left[textCount] = event.nativeEvent.offsetX;
-        top[textCount] = event.nativeEvent.offsetY;
-        textCount = textCount +1;
-        this.setState({left: left, top:top, textCount: textCount}, () => console.log(this.state));
+        let newleft = [...this.state.left];
+        let newtop = [...this.state.top];
+        let { textCount } = this.state;
+
+        newleft[textCount] = event.nativeEvent.offsetX;
+        newtop[textCount] = event.nativeEvent.offsetY;
+        this.setState({ left: newleft, top: newtop, textCount: textCount+1 });
     }
 
     render(){
-        let {id, url, value, textCount, top, left, color, size} = this.state;
+        let { textCount, top, left, color, size } = this.state;
+        let { url, id } = this.props;
         let count = [];
+
         for(let j=0; j<textCount; j++){
             count[j] = j;
         }
@@ -71,10 +62,10 @@ class Editor extends React.Component{
                     <div className="Editor--ImgInsertText" onDoubleClick={e => this.onInsertText(e)}>
                         <div className="Editor--ImgInsertTextContainer">
                             {
-                                count.map((opt,index) => {
+                                count.map(id => {
                                     return(
-                                        <Writer color={color} size={size} key={index} top={top[index]} left={left[index]} changed={event => this.onChangeHandler(event,index)} value={value[index]} />
-                                        )
+                                        <Writer color={color} size={size} current={id} key={id} top={top[id]} left={left[id]} />
+                                    )
                                 })
                             }
                         </div>
@@ -83,8 +74,8 @@ class Editor extends React.Component{
                 <div className="Editor--Content">
                     <h1 className="Editor--ContentHeadline">Triple Click to edit the meme!</h1>
                     <TwitterPicker triangle="hide" onChangeComplete={this.handleColorSwatch}/>
-                    <Input type="text" value={size} placeholder="Font Size in pixels" changed={event => this.onOtherInputHandler(event, "size")} />
-                    <Button onClick={e => this.onClickHandler(e)} type="submit">Generate</Button>
+                    <Input type="text" value={size} placeholder="Font Size in pixels" changed={this.onSizeHandler} />
+                    <Button onClick={e => this.onClickHandler(e)}>Generate</Button>
                 </div>
             </div>
         )

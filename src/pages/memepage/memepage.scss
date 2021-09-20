@@ -1,5 +1,5 @@
 .Memepage{
-    width: 99vw;
+    width: 98vw;
     background-color: #0C0F0A;
     display: flex;
     align-items: center;
@@ -16,13 +16,13 @@
         margin-bottom: 5vh;
 
         .Memepage--SearchHeading{
-            font-size: 4rem;
+            font-size: 3rem;
             font-weight: 400;
             color: #E5FFDE;
         }
 
         .Memepage--SearchBar{
-            width: 15vw;
+            width: 25vw;
             height: 5vh;
             font-family: 'Sen', sans-serif;
             background-color:transparent;
@@ -55,15 +55,21 @@
             flex-wrap: wrap;
 
             .Memepage--SearchHeading{
-                font-size: 2.5rem;
+                font-size: 2.2rem;
                 text-align: center;
                 margin-top: 1rem;
             }
 
             .Memepage--SearchBar{
-                width: 65vw;
+                width: 75vw;
                 margin-bottom: 2rem;
                 margin-top: 2rem;
+                font-size: 1.7rem;
+
+                &::placeholder{
+                    font-size: 1.7rem;
+                    color: #fff;
+                }
             }
         }
     }
