@@ -25,8 +25,17 @@
     }
 
     .Writer--Tools{
-        width: 50px;
-        height: 25px;
-        background-color: #0C0F0A;
+        width: auto;
+        height: 30px;
+        background-color: #fff;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+
+        .Writer--ToolsLogo {
+            height: 20px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
     }
 }
