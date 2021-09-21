@@ -17,19 +17,30 @@ class Editor extends React.Component{
         textCount: 0,
         color: '',
         size: '',
+        font: '',
         active: 'color'
     }
 
-    onClickHandler = (event) => {
+    onDownloadHandler = (event) => {
         htmlToImage.toPng(document.getElementById('meme'))
         .then(function (dataUrl) {
             download(dataUrl, 'meme');
         });
     }
 
-    onSizeHandler = (event) => {
+    onChangeHandler = (event) => {
         event.preventDefault();
         this.setState({ size: event.target.value })
+    }
+
+    onSelectHandler = (type, value) => {
+        switch(type) {
+            case 'font':
+                this.setState({ font: value });
+                break;
+            default:
+                break;
+        }
     }
 
     onToolHandler = (type) => {
@@ -52,7 +63,7 @@ class Editor extends React.Component{
     }
 
     render(){
-        let { textCount, top, left, color, size, active } = this.state;
+        let { textCount, top, left, color, size, active, font } = this.state;
         let { url, id } = this.props;
         let count = [];
 
@@ -92,15 +103,58 @@ class Editor extends React.Component{
                             Style
                         </div>
                     </div>
-                    <div style={{marginBottom: '2rem'}}>
+                    <div className="Editor--ContentOptions">
                         {
                             active === 'color' ? 
                                 <TwitterPicker triangle="hide" color={color} onChangeComplete={this.handleColorSwatch}/> :
-                                active === 'style' ? 
-                                    <Input type="text" value={size} placeholder="Font Size in pixels" changed={this.onSizeHandler} /> : null
+                                active === 'font' ? 
+                                    <div className="Editor--ContentFont">
+                                        <div className={`Editor--ContentFontType ${font === "'Montserrat', sans-serif" ? 'Editor--ContentFontActive' : ''}`}
+                                            onClick={() => this.onSelectHandler('font',"'Montserrat', sans-serif")} style={{ fontFamily: "'Montserrat', sans-serif" }} >
+                                            Montserrat
+                                        </div>
+                                        <div className={`Editor--ContentFontType ${font === "'Roboto', sans-serif" ? 'Editor--ContentFontActive' : ''}`}
+                                            onClick={() => this.onSelectHandler('font',"'Roboto', sans-serif")} style={{ fontFamily: "'Roboto', sans-serif" }} >
+                                                Roboto
+                                        </div>
+                                        <div className={`Editor--ContentFontType ${font === "'Open Sans', sans-serif" ? 'Editor--ContentFontActive' : ''}`}
+                                            onClick={() => this.onSelectHandler('font',"'Open Sans', sans-serif")} style={{ fontFamily: "'Open Sans', sans-serif" }} >
+                                                Open Sans
+                                        </div>
+                                        <div className={`Editor--ContentFontType ${font === "'Stick No Bills', sans-serif" ? 'Editor--ContentFontActive' : ''}`}
+                                            onClick={() => this.onSelectHandler('font',"'Stick No Bills', sans-serif")} style={{ fontFamily: "'Stick No Bills', sans-serif" }} >
+                                                Stick No Bills
+                                        </div>
+                                        <div className={`Editor--ContentFontType ${font === "'Oswald', sans-serif" ? 'Editor--ContentFontActive' : ''}`}
+                                            onClick={() => this.onSelectHandler('font',"'Oswald', sans-serif")} style={{ fontFamily: "'Oswald', sans-serif" }} >
+                                                Oswald
+                                        </div>
+                                        <div className={`Editor--ContentFontType ${font === "'Grechen Fuemen', cursive" ? 'Editor--ContentFontActive' : ''}`}
+                                            onClick={() => this.onSelectHandler('font',"'Grechen Fuemen', cursive")} style={{ fontFamily: "'Grechen Fuemen', cursive" }} >
+                                                Grechen Fuemen
+                                        </div>
+                                        <div className={`Editor--ContentFontType ${font === "'Gluten', cursive" ? 'Editor--ContentFontActive' : ''}`}
+                                            onClick={() => this.onSelectHandler('font',"'Gluten', cursive")} style={{ fontFamily: "'Gluten', cursive" }} >
+                                                Gluten
+                                        </div>
+                                        <div className={`Editor--ContentFontType ${font === "'Amatic SC', cursive" ? 'Editor--ContentFontActive' : ''}`}
+                                            onClick={() => this.onSelectHandler('font',"'Amatic SC', cursive")} style={{ fontFamily: "'Amatic SC', cursive" }} >
+                                                Amatic SC
+                                        </div>
+                                        <div className={`Editor--ContentFontType ${font === "'Cinzel', serif" ? 'Editor--ContentFontActive' : ''}`}
+                                            onClick={() => this.onSelectHandler('font',"'Cinzel', serif")} style={{ fontFamily: "'Cinzel', serif" }} >
+                                                Cinzel
+                                        </div>
+                                        <div className={`Editor--ContentFontType ${font === "'Orbitron', sans-serif" ? 'Editor--ContentFontActive' : ''}`}
+                                            onClick={() => this.onSelectHandler('font',"'Orbitron', sans-serif")} style={{ fontFamily: "'Orbitron', sans-serif" }} >
+                                                Orbitron
+                                        </div>
+                                    </div> :
+                                    active === 'style' ? 
+                                        <Input type="text" value={size} placeholder="Font Size in pixels" changed={this.onChangeHandler} /> : null
                         }
                     </div>
-                    <Button onClick={e => this.onClickHandler(e)}>Generate</Button>
+                    <Button onClick={e => this.onDownloadHandler(e)}>Generate</Button>
                 </div>
             </div>
         )

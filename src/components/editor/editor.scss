@@ -73,6 +73,49 @@
                 color: #fff;
             }
         }
+
+        .Editor--ContentOptions {
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            .Editor--ContentFont {
+                height: auto;
+                width: 80%;
+                max-height: 25vh;
+                overflow-y: auto;
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+                flex-wrap: wrap;
+    
+                .Editor--ContentFontType {
+                    padding: 10px 0;
+                    background-color: #fff;
+                    cursor: pointer;
+                    width: 45%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border-radius: 4px;
+                    margin-bottom: 1rem;
+                    font-size: 1.5rem;
+                    font-weight: 400;
+
+                    &:hover {
+                        color: #fff;
+                        background-color: #0693E3;
+                    }
+                }
+
+                .Editor--ContentFontActive {
+                    color: #fff;
+                    background-color: #0693E3;
+                }
+            }
+        }
+
     }
 }
 
