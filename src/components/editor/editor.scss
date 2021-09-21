@@ -38,12 +38,11 @@
     }
 
     .Editor--Content{
-        height: 40vh;
+        height: auto;
         width: 30vw;
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: space-around;
 
         .Editor--ContentHeadline{
             font-size: 2.5rem !important;
@@ -51,6 +50,114 @@
             color: #E5FFDE;
             text-transform: capitalize;
         }
+
+        .Editor--ContentTools {
+            display: flex;
+            background-color: #FFF;
+            border-radius: 4px;
+            margin: 2rem 0;
+
+            .Editor--ContentToolType {
+                padding: 10px 20px;
+                cursor: pointer;
+                font-size: 15px;
+
+                &:hover {
+                    background-color: #FE4A49;
+                    color: #fff;
+                }
+            }
+
+            .Editor--ContentToolActive {
+                background-color: #FE4A49;
+                color: #fff;
+            }
+        }
+
+        .Editor--ContentOptions {
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+
+            .Editor--ContentFont {
+                height: auto;
+                width: 80%;
+                max-height: 25vh;
+                overflow-y: auto;
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+                flex-wrap: wrap;
+    
+                .Editor--ContentFontType {
+                    padding: 10px 0;
+                    background-color: #fff;
+                    cursor: pointer;
+                    width: 45%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border-radius: 4px;
+                    margin-bottom: 1rem;
+                    font-size: 1.5rem;
+                    font-weight: 400;
+
+                    &:hover {
+                        color: #fff;
+                        background-color: #0693E3;
+                    }
+                }
+
+                .Editor--ContentFontActive {
+                    color: #fff;
+                    background-color: #0693E3;
+                }
+            }
+
+            .Editor--ContentStyle {
+                height: auto;
+                width: 80%;
+                overflow-y: auto;
+                display: flex;
+                flex-direction: column;
+
+                .Editor--ContentStyleType {
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-bottom: 1.5rem;
+
+                    .Editor--ContentStyleTitle {
+                        font-weight: 400;
+                        font-size: 1.5rem;
+                        color: #fff;
+                    }
+
+                    .Editor--ContentStyleTypeTrait {
+                        padding: 10px;
+                        background-color: #fff;
+                        cursor: pointer;
+                        border-radius: 4px;
+                        font-size: 1.5rem;
+                        margin-right: 1rem;
+
+                        &:hover {
+                            color: #fff;
+                            background-color: #0693E3;
+                        }
+                    }
+
+                    .Editor--ContentStyleTypeActive {
+                        color: #fff;
+                        background-color: #0693E3;
+                    }
+                }
+            }
+        }
+
     }
 }
 
@@ -76,14 +183,21 @@
         }
 
         .Editor--Content{
-            height: 40vh;
             width: 70vw;
-            justify-content: space-between;
             margin-top: 2rem;
 
             .Editor--ContentHeadline{
                 font-size: 2rem !important;
                 text-align: center;
+            }
+
+            .Editor--ContentOptions {
+                .Editor--ContentFont {
+                    width: 100%;
+                }
+                .Editor--ContentStyle {
+                    width: 100%;
+                }
             }
         }
     }

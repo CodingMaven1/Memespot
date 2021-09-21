@@ -43,7 +43,7 @@ class Memepage extends React.Component{
             file: file,
             url: reader.result,
             displayMemeEditor: true
-          }, () => console.log(this.state));
+          });
         }
     
         reader.readAsDataURL(file)
