@@ -128,7 +128,7 @@
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    margin-bottom: 1rem;
+                    margin-bottom: 1.5rem;
 
                     .Editor--ContentStyleTitle {
                         font-weight: 400;
@@ -193,6 +193,9 @@
 
             .Editor--ContentOptions {
                 .Editor--ContentFont {
+                    width: 100%;
+                }
+                .Editor--ContentStyle {
                     width: 100%;
                 }
             }

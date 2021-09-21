@@ -84,7 +84,10 @@ class Editor extends React.Component{
         let writerstyles = {
             color: color,
             fontSize: `${size}px`,
-            fontFamily: font
+            fontFamily: font,
+            fontWeight: bold ? '700' : '400',
+            fontStyle: italic ? 'italic' : 'normal',
+            textTransform: uppercase ? 'uppercase' : 'lowercase'
         }
 
         for(let j=0; j<textCount; j++){
