@@ -15,9 +15,9 @@ class Editor extends React.Component{
         top: [],
         left: [],
         textCount: 0,
-        color: '',
-        size: '',
-        font: '',
+        color: '#000',
+        size: '25',
+        font: "'Impact'",
         active: 'color'
     }
 
@@ -66,6 +66,11 @@ class Editor extends React.Component{
         let { textCount, top, left, color, size, active, font } = this.state;
         let { url, id } = this.props;
         let count = [];
+        let writerstyles = {
+            color: color,
+            fontSize: `${size}px`,
+            fontFamily: font
+        }
 
         for(let j=0; j<textCount; j++){
             count[j] = j;
@@ -80,7 +85,7 @@ class Editor extends React.Component{
                             {
                                 count.map(id => {
                                     return(
-                                        <Writer color={color} size={size} current={id} key={id} top={top[id]} left={left[id]} />
+                                        <Writer style={writerstyles} current={id} key={id} top={top[id]} left={left[id]} />
                                     )
                                 })
                             }
@@ -111,7 +116,7 @@ class Editor extends React.Component{
                                     <div className="Editor--ContentFont">
                                         <div className={`Editor--ContentFontType ${font === "'Montserrat', sans-serif" ? 'Editor--ContentFontActive' : ''}`}
                                             onClick={() => this.onSelectHandler('font',"'Montserrat', sans-serif")} style={{ fontFamily: "'Montserrat', sans-serif" }} >
-                                            Montserrat
+                                                Montserrat
                                         </div>
                                         <div className={`Editor--ContentFontType ${font === "'Roboto', sans-serif" ? 'Editor--ContentFontActive' : ''}`}
                                             onClick={() => this.onSelectHandler('font',"'Roboto', sans-serif")} style={{ fontFamily: "'Roboto', sans-serif" }} >

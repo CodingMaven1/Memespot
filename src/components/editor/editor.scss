@@ -148,6 +148,12 @@
                 font-size: 2rem !important;
                 text-align: center;
             }
+
+            .Editor--ContentOptions {
+                .Editor--ContentFont {
+                    width: 100%;
+                }
+            }
         }
     }
 }

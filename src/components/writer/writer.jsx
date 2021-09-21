@@ -53,7 +53,7 @@ class Writer extends React.Component {
 
     render() {
         let { value, focused, hovered } = this.state;
-        let { size, color, top, left, current } = this.props;
+        let { style, top, left, current } = this.props;
 
         return (
             <div className="Writer" id={`Writer${current}`} style={{ top: top, left: left }} 
@@ -62,7 +62,7 @@ class Writer extends React.Component {
                 <textarea className="Writer--Area" id={`Writer--AreaField${current}`} value={value} 
                     onChange={this.onTextHandler} onMouseUp={() => this.onDeactivateHandler("pressed")}
                     onTouchCancel={() => this.onDeactivateHandler("pressed")}
-                    type="text" style={{ fontSize: `${size + "px"}`, color: color}} />
+                    type="text" style={{...style}} />
                 {
                     (( focused || hovered ) && value !== '' ) ? 
                         <div className="Writer--Tools" onMouseEnter={() => this.onActivateHandler("hovered")} 
