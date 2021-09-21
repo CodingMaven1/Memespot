@@ -154,9 +154,19 @@ class Editor extends React.Component{
                                             onClick={() => this.onSelectHandler('font',"'Orbitron', sans-serif")} style={{ fontFamily: "'Orbitron', sans-serif" }} >
                                                 Orbitron
                                         </div>
+                                        <div className={`Editor--ContentFontType ${font === "'Bungee', cursive" ? 'Editor--ContentFontActive' : ''}`}
+                                            onClick={() => this.onSelectHandler('font',"'Bungee', cursive")} style={{ fontFamily: "'Bungee', cursive" }} >
+                                                Bungee
+                                        </div>
+                                        <div className={`Editor--ContentFontType ${font === "'Impact', sans-serif" ? 'Editor--ContentFontActive' : ''}`}
+                                            onClick={() => this.onSelectHandler('font',"'Impact', sans-serif")} style={{ fontFamily: "'Impact', sans-serif" }} >
+                                                Impact
+                                        </div>
                                     </div> :
                                     active === 'style' ? 
-                                        <Input type="text" value={size} placeholder="Font Size in pixels" changed={this.onChangeHandler} /> : null
+                                        <div className="Editor--ContentFont">
+                                            <Input type="text" value={size} placeholder="Font Size in pixels" changed={this.onChangeHandler} />
+                                        </div> : null
                         }
                     </div>
                     <Button onClick={e => this.onDownloadHandler(e)}>Generate</Button>

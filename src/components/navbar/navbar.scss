@@ -26,32 +26,31 @@
         align-items: center;
         justify-content: space-around;
 
-        .Navbar--Links--Link:focus{
-            outline: none;
-        }
-
-        .Navbar--Links--Link::-webkit-file-upload-button {
-            visibility: hidden;
-        }
-          .Navbar--Links--Link::before {
-            content: 'Upload';
-            display: inline-block;
+        .Navbar--Links--Label {
             font-family: 'Monoton', cursive;
             color: #E5FFDE;
             border: 1px solid #E5FFDE;
             border-radius: 0.5rem;
             padding: 1rem 2rem;
             outline: none;
-            -webkit-user-select: none;
             cursor: pointer;
             font-size: 2rem;
             margin-top: 2rem;
             text-transform: uppercase;
-          }
-          .Navbar--Links--Link:hover::before {
-            border-color: #FE4A49;
-            background-color: #FE4A49;
-          }
+
+            &:hover {
+                border-color: #FE4A49;
+                background-color: #FE4A49;
+            }
+        }
+
+        .Navbar--Links--Link {
+            visibility: hidden;
+
+            &:focus{
+                outline: none;
+            }
+        }
 
     }
 }
@@ -67,7 +66,7 @@
         .Navbar--Links{
             width: 50%;
 
-            .Navbar--Links--Link::before {
+            .Navbar--Links--Label {
                 font-size: 1.7rem;
                 margin-top: 0;
                 margin-left: 5rem;
