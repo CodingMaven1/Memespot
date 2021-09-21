@@ -40,15 +40,15 @@ class Writer extends React.Component {
     }
 
     render() {
-        let { focused, hovered, pressed } = this.state;
-        let { style, top, left, current, value, ondelete, ontext, onactivate, ondeactivate, onmove, onstop } = this.props;
+        let { focused, hovered } = this.state;
+        let { style, top, left, current, value, ondelete, ontext, onactivate, ondeactivate } = this.props;
 
         return (
             <div className="Writer" id={`Writer${current}`} style={{ top: top, left: left }} 
-                onMouseMove={pressed ? this.onRotateHandler : onmove}
+                onMouseMove={this.onRotateHandler}
                 onFocus={() => this.onActivateHandler("focused")} onBlur={() => this.onDeactivateHandler("focused")} >
                 <textarea className="Writer--Area" id={`Writer--AreaField${current}`} value={value} 
-                    onChange={ontext} onMouseUp={pressed ? () => this.onDeactivateHandler("pressed") : onstop}
+                    onChange={ontext} onMouseUp={() => this.onDeactivateHandler("pressed")}
                     type="text" style={{...style}} />
                 {
                     (( focused || hovered ) && value !== '' ) ? 

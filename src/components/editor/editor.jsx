@@ -16,6 +16,7 @@ class Editor extends React.Component{
         top: [],
         left: [],
         pressed: [],
+        currentindex: null,
         color: '#000',
         size: '25',
         font: "'Impact', sans-serif",
@@ -47,11 +48,11 @@ class Editor extends React.Component{
                 break;
             case "activate":
                 newpress[index] = true;
-                this.setState({ pressed: newpress });
+                this.setState({ pressed: newpress, currentindex: index });
                 break;
             case "deactivate":
                 newpress[index] = false;
-                this.setState({ pressed: newpress });
+                this.setState({ pressed: newpress, currentindex: null });
                 break;
             default:
                 break;
@@ -117,8 +118,23 @@ class Editor extends React.Component{
         this.setState({ left: newleft, top: newtop, value: newvalue, pressed: newpress });
     }
 
+    onMoveHandler = (event) => {
+        event.preventDefault();
+        let { pressed, currentindex } = this.state;
+
+        if (pressed[currentindex] && currentindex !== null) {
+            let newleft = [...this.state.left];
+            let newtop = [...this.state.top];
+
+            newleft[currentindex] = event.nativeEvent.offsetX;
+            newtop[currentindex] = event.nativeEvent.offsetY;
+
+            this.setState({ left: newleft, top: newtop })
+        }
+    }
+
     render(){
-        let { top, left, value, color, size, active, font, bold, italic, uppercase } = this.state;
+        let { top, left, value, color, size, active, font, bold, italic, uppercase, currentindex } = this.state;
         let { url, id } = this.props;
         let writerstyles = {
             color: color,
@@ -131,7 +147,8 @@ class Editor extends React.Component{
 
         return(
             <div className="Editor">
-                <div id="meme" className="Editor--ImgContainer">
+                <div id="meme" className="Editor--ImgContainer" onMouseMove={this.onMoveHandler} 
+                    onMouseUp={(e) => this.onChangeHandler(e,"deactivate",currentindex)}>
                     <img src={url} alt={id} className="Editor--Img" />
                     <div className="Editor--ImgInsertText" onDoubleClick={e => this.onInsertText(e)}>
                         <div className="Editor--ImgInsertTextContainer">
