@@ -17,7 +17,7 @@ class Editor extends React.Component{
         textCount: 0,
         color: '#000',
         size: '25',
-        font: "'Impact'",
+        font: "'Impact', sans-serif",
         active: 'color',
         bold: false,
         italic: false,
