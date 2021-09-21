@@ -18,7 +18,10 @@ class Editor extends React.Component{
         color: '#000',
         size: '25',
         font: "'Impact'",
-        active: 'color'
+        active: 'color',
+        bold: false,
+        italic: false,
+        uppercase: false,
     }
 
     onDownloadHandler = (event) => {
@@ -33,10 +36,22 @@ class Editor extends React.Component{
         this.setState({ size: event.target.value })
     }
 
-    onSelectHandler = (type, value) => {
+    onFontHandler = (value) => {
+        this.setState({ font: value });
+    }
+
+    onStyleHandler = (type) => {
+        let { bold, italic, uppercase } = this.state;
+
         switch(type) {
-            case 'font':
-                this.setState({ font: value });
+            case 'bold':
+                this.setState({ bold: !bold });
+                break;
+            case 'italic':
+                this.setState({ italic: !italic });
+                break;
+            case 'uppercase':
+                this.setState({ uppercase: !uppercase });
                 break;
             default:
                 break;
@@ -63,7 +78,7 @@ class Editor extends React.Component{
     }
 
     render(){
-        let { textCount, top, left, color, size, active, font } = this.state;
+        let { textCount, top, left, color, size, active, font, bold, italic, uppercase } = this.state;
         let { url, id } = this.props;
         let count = [];
         let writerstyles = {
@@ -115,57 +130,74 @@ class Editor extends React.Component{
                                 active === 'font' ? 
                                     <div className="Editor--ContentFont">
                                         <div className={`Editor--ContentFontType ${font === "'Montserrat', sans-serif" ? 'Editor--ContentFontActive' : ''}`}
-                                            onClick={() => this.onSelectHandler('font',"'Montserrat', sans-serif")} style={{ fontFamily: "'Montserrat', sans-serif" }} >
+                                            onClick={() => this.onFontHandler("'Montserrat', sans-serif")} style={{ fontFamily: "'Montserrat', sans-serif" }} >
                                                 Montserrat
                                         </div>
                                         <div className={`Editor--ContentFontType ${font === "'Roboto', sans-serif" ? 'Editor--ContentFontActive' : ''}`}
-                                            onClick={() => this.onSelectHandler('font',"'Roboto', sans-serif")} style={{ fontFamily: "'Roboto', sans-serif" }} >
+                                            onClick={() => this.onFontHandler("'Roboto', sans-serif")} style={{ fontFamily: "'Roboto', sans-serif" }} >
                                                 Roboto
                                         </div>
                                         <div className={`Editor--ContentFontType ${font === "'Open Sans', sans-serif" ? 'Editor--ContentFontActive' : ''}`}
-                                            onClick={() => this.onSelectHandler('font',"'Open Sans', sans-serif")} style={{ fontFamily: "'Open Sans', sans-serif" }} >
+                                            onClick={() => this.onFontHandler("'Open Sans', sans-serif")} style={{ fontFamily: "'Open Sans', sans-serif" }} >
                                                 Open Sans
                                         </div>
                                         <div className={`Editor--ContentFontType ${font === "'Stick No Bills', sans-serif" ? 'Editor--ContentFontActive' : ''}`}
-                                            onClick={() => this.onSelectHandler('font',"'Stick No Bills', sans-serif")} style={{ fontFamily: "'Stick No Bills', sans-serif" }} >
+                                            onClick={() => this.onFontHandler("'Stick No Bills', sans-serif")} style={{ fontFamily: "'Stick No Bills', sans-serif" }} >
                                                 Stick No Bills
                                         </div>
                                         <div className={`Editor--ContentFontType ${font === "'Oswald', sans-serif" ? 'Editor--ContentFontActive' : ''}`}
-                                            onClick={() => this.onSelectHandler('font',"'Oswald', sans-serif")} style={{ fontFamily: "'Oswald', sans-serif" }} >
+                                            onClick={() => this.onFontHandler("'Oswald', sans-serif")} style={{ fontFamily: "'Oswald', sans-serif" }} >
                                                 Oswald
                                         </div>
                                         <div className={`Editor--ContentFontType ${font === "'Grechen Fuemen', cursive" ? 'Editor--ContentFontActive' : ''}`}
-                                            onClick={() => this.onSelectHandler('font',"'Grechen Fuemen', cursive")} style={{ fontFamily: "'Grechen Fuemen', cursive" }} >
+                                            onClick={() => this.onFontHandler("'Grechen Fuemen', cursive")} style={{ fontFamily: "'Grechen Fuemen', cursive" }} >
                                                 Grechen Fuemen
                                         </div>
                                         <div className={`Editor--ContentFontType ${font === "'Gluten', cursive" ? 'Editor--ContentFontActive' : ''}`}
-                                            onClick={() => this.onSelectHandler('font',"'Gluten', cursive")} style={{ fontFamily: "'Gluten', cursive" }} >
+                                            onClick={() => this.onFontHandler("'Gluten', cursive")} style={{ fontFamily: "'Gluten', cursive" }} >
                                                 Gluten
                                         </div>
                                         <div className={`Editor--ContentFontType ${font === "'Amatic SC', cursive" ? 'Editor--ContentFontActive' : ''}`}
-                                            onClick={() => this.onSelectHandler('font',"'Amatic SC', cursive")} style={{ fontFamily: "'Amatic SC', cursive" }} >
+                                            onClick={() => this.onFontHandler("'Amatic SC', cursive")} style={{ fontFamily: "'Amatic SC', cursive" }} >
                                                 Amatic SC
                                         </div>
                                         <div className={`Editor--ContentFontType ${font === "'Cinzel', serif" ? 'Editor--ContentFontActive' : ''}`}
-                                            onClick={() => this.onSelectHandler('font',"'Cinzel', serif")} style={{ fontFamily: "'Cinzel', serif" }} >
+                                            onClick={() => this.onFontHandler("'Cinzel', serif")} style={{ fontFamily: "'Cinzel', serif" }} >
                                                 Cinzel
                                         </div>
                                         <div className={`Editor--ContentFontType ${font === "'Orbitron', sans-serif" ? 'Editor--ContentFontActive' : ''}`}
-                                            onClick={() => this.onSelectHandler('font',"'Orbitron', sans-serif")} style={{ fontFamily: "'Orbitron', sans-serif" }} >
+                                            onClick={() => this.onFontHandler("'Orbitron', sans-serif")} style={{ fontFamily: "'Orbitron', sans-serif" }} >
                                                 Orbitron
                                         </div>
                                         <div className={`Editor--ContentFontType ${font === "'Bungee', cursive" ? 'Editor--ContentFontActive' : ''}`}
-                                            onClick={() => this.onSelectHandler('font',"'Bungee', cursive")} style={{ fontFamily: "'Bungee', cursive" }} >
+                                            onClick={() => this.onFontHandler("'Bungee', cursive")} style={{ fontFamily: "'Bungee', cursive" }} >
                                                 Bungee
                                         </div>
                                         <div className={`Editor--ContentFontType ${font === "'Impact', sans-serif" ? 'Editor--ContentFontActive' : ''}`}
-                                            onClick={() => this.onSelectHandler('font',"'Impact', sans-serif")} style={{ fontFamily: "'Impact', sans-serif" }} >
+                                            onClick={() => this.onFontHandler("'Impact', sans-serif")} style={{ fontFamily: "'Impact', sans-serif" }} >
                                                 Impact
                                         </div>
                                     </div> :
                                     active === 'style' ? 
-                                        <div className="Editor--ContentFont">
-                                            <Input type="text" value={size} placeholder="Font Size in pixels" changed={this.onChangeHandler} />
+                                        <div className="Editor--ContentStyle">
+                                            <div className="Editor--ContentStyleType">
+                                                <h1 className="Editor--ContentStyleTitle">Font Size (in px) - </h1>
+                                                <Input type="text" value={size} changed={this.onChangeHandler} />
+                                            </div>
+                                            <div className="Editor--ContentStyleType">
+                                                <div className={`Editor--ContentStyleTypeTrait ${italic === true ? 'Editor--ContentStyleTypeActive' : ''}`}
+                                                    onClick={() => this.onStyleHandler('italic')} style={{ fontStyle: 'italic'}} >
+                                                        Italic
+                                                </div>
+                                                <div className={`Editor--ContentStyleTypeTrait ${uppercase === true ? 'Editor--ContentStyleTypeActive' : ''}`}
+                                                    onClick={() => this.onStyleHandler('uppercase')} style={{ textTransform: 'uppercase'}} >
+                                                        Uppercase
+                                                </div>
+                                                <div className={`Editor--ContentStyleTypeTrait ${bold === true ? 'Editor--ContentStyleTypeActive' : ''}`}
+                                                    onClick={() => this.onStyleHandler('bold')} style={{ fontWeight: 'bold'}} >
+                                                        Bold
+                                                </div>
+                                            </div>
                                         </div> : null
                         }
                     </div>
