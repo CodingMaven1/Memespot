@@ -12,9 +12,10 @@ import './editor.scss';
 class Editor extends React.Component{
 
     state = {
+        value: [],
         top: [],
         left: [],
-        textCount: 0,
+        pressed: [],
         color: '#000',
         size: '25',
         font: "'Impact', sans-serif",
@@ -31,9 +32,30 @@ class Editor extends React.Component{
         });
     }
 
-    onChangeHandler = (event) => {
+    onChangeHandler = (event, type, index) => {
         event.preventDefault();
-        this.setState({ size: event.target.value })
+        let newvalue = [...this.state.value];
+        let newpress = [...this.state.pressed];
+
+        switch (type) {
+            case "size":
+                this.setState({ size: event.target.value });
+                break;
+            case "value":
+                newvalue[index] = event.target.value;
+                this.setState({ value: newvalue });
+                break;
+            case "activate":
+                newpress[index] = true;
+                this.setState({ pressed: newpress });
+                break;
+            case "deactivate":
+                newpress[index] = false;
+                this.setState({ pressed: newpress });
+                break;
+            default:
+                break;
+        }
     }
 
     onFontHandler = (value) => {
@@ -70,17 +92,34 @@ class Editor extends React.Component{
     onInsertText = (event) => {
         let newleft = [...this.state.left];
         let newtop = [...this.state.top];
-        let { textCount } = this.state;
+        let newval = [...this.state.value];
+        let newpress = [...this.state.pressed];
+        let arrlen = newval.length;
 
-        newleft[textCount] = event.nativeEvent.offsetX;
-        newtop[textCount] = event.nativeEvent.offsetY;
-        this.setState({ left: newleft, top: newtop, textCount: textCount+1 });
+        newleft[arrlen] = event.nativeEvent.offsetX;
+        newtop[arrlen] = event.nativeEvent.offsetY;
+        newpress.push(false)
+        newval.push('')
+        this.setState({ left: newleft, top: newtop, value: newval, pressed: newpress});
+    }
+
+    onDeleteHandler = (index) => {
+        let newleft = [...this.state.left];
+        let newtop = [...this.state.top];
+        let newvalue = [...this.state.value];
+        let newpress = [...this.state.pressed];
+
+        newleft.splice(index, 1);
+        newtop.splice(index, 1);
+        newvalue.splice(index, 1)
+        newpress.splice(index, 1)
+
+        this.setState({ left: newleft, top: newtop, value: newvalue, pressed: newpress });
     }
 
     render(){
-        let { textCount, top, left, color, size, active, font, bold, italic, uppercase } = this.state;
+        let { top, left, value, color, size, active, font, bold, italic, uppercase } = this.state;
         let { url, id } = this.props;
-        let count = [];
         let writerstyles = {
             color: color,
             fontSize: `${size}px`,
@@ -90,10 +129,6 @@ class Editor extends React.Component{
             textTransform: uppercase ? 'uppercase' : 'lowercase'
         }
 
-        for(let j=0; j<textCount; j++){
-            count[j] = j;
-        }
-
         return(
             <div className="Editor">
                 <div id="meme" className="Editor--ImgContainer">
@@ -101,9 +136,13 @@ class Editor extends React.Component{
                     <div className="Editor--ImgInsertText" onDoubleClick={e => this.onInsertText(e)}>
                         <div className="Editor--ImgInsertTextContainer">
                             {
-                                count.map(id => {
+                                value.map((val, id) => {
                                     return(
-                                        <Writer style={writerstyles} current={id} key={id} top={top[id]} left={left[id]} />
+                                        <Writer style={writerstyles} current={id} key={id} top={top[id]} left={left[id]}
+                                            value={val} ondelete={() => this.onDeleteHandler(id)} 
+                                            ontext={(e) => this.onChangeHandler(e,"value",id)}
+                                            onactivate={(e) => this.onChangeHandler(e,"activate",id)}
+                                            ondeactivate={(e) => this.onChangeHandler(e,"deactivate",id)} />
                                     )
                                 })
                             }
@@ -185,7 +224,7 @@ class Editor extends React.Component{
                                         <div className="Editor--ContentStyle">
                                             <div className="Editor--ContentStyleType">
                                                 <h1 className="Editor--ContentStyleTitle">Font Size (in px) - </h1>
-                                                <Input type="text" value={size} changed={this.onChangeHandler} />
+                                                <Input type="text" value={size} changed={(e) => this.onChangeHandler(e,"size",0)} />
                                             </div>
                                             <div className="Editor--ContentStyleType">
                                                 <div className={`Editor--ContentStyleTypeTrait ${italic === true ? 'Editor--ContentStyleTypeActive' : ''}`}
