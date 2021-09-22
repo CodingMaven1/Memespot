@@ -54,11 +54,16 @@ class Writer extends React.Component {
                     (( focused || hovered ) && value !== '' ) ? 
                         <div className="Writer--Tools" onMouseEnter={() => this.onActivateHandler("hovered")} 
                             onMouseLeave={() => this.onDeactivateHandler("hovered")} >
-                            <img src={movelogo} className="Writer--ToolsLogo" alt="move" draggable={false}
-                                onMouseDown={onactivate} />
-                            <img src={rotatelogo} className="Writer--ToolsLogo" alt="rotate" draggable={false}
-                                onMouseDown={() => this.onActivateHandler("pressed")} 
-                                onMouseUp={() => this.onDeactivateHandler("pressed")} />
+                            {
+                                window.innerWidth < 500 ? null :
+                                    <React.Fragment>
+                                        <img src={movelogo} className="Writer--ToolsLogo" alt="move" draggable={false}
+                                            onMouseDown={onactivate} />
+                                        <img src={rotatelogo} className="Writer--ToolsLogo" alt="rotate" draggable={false}
+                                            onMouseDown={() => this.onActivateHandler("pressed")} 
+                                            onMouseUp={() => this.onDeactivateHandler("pressed")} />
+                                    </React.Fragment>
+                            }
                             <img src={deletelogo} className="Writer--ToolsLogo" alt="delete" draggable={false} 
                                 onClick={ondelete} style={{ marginRight: '10px' }} />
                         </div> : null
