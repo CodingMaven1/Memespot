@@ -41,7 +41,7 @@ class Writer extends React.Component {
 
     render() {
         let { focused, hovered } = this.state;
-        let { style, top, left, current, value, ondelete, ontext, onactivate, ondeactivate } = this.props;
+        let { style, top, left, current, value, ondelete, ontext, onactivate } = this.props;
 
         return (
             <div className="Writer" id={`Writer${current}`} style={{ top: top, left: left }} 
@@ -55,7 +55,7 @@ class Writer extends React.Component {
                         <div className="Writer--Tools" onMouseEnter={() => this.onActivateHandler("hovered")} 
                             onMouseLeave={() => this.onDeactivateHandler("hovered")} >
                             <img src={movelogo} className="Writer--ToolsLogo" alt="move" draggable={false}
-                                onMouseDown={onactivate} onMouseUp={ondeactivate} />
+                                onMouseDown={onactivate} />
                             <img src={rotatelogo} className="Writer--ToolsLogo" alt="rotate" draggable={false}
                                 onMouseDown={() => this.onActivateHandler("pressed")} 
                                 onMouseUp={() => this.onDeactivateHandler("pressed")} />
