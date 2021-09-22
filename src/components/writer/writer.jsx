@@ -41,7 +41,7 @@ class Writer extends React.Component {
 
     render() {
         let { focused, hovered } = this.state;
-        let { style, top, left, current, value, ondelete, ontext, onactivate, ondeactivate } = this.props;
+        let { style, top, left, current, value, ondelete, ontext, onactivate } = this.props;
 
         return (
             <div className="Writer" id={`Writer${current}`} style={{ top: top, left: left }} 
@@ -54,11 +54,16 @@ class Writer extends React.Component {
                     (( focused || hovered ) && value !== '' ) ? 
                         <div className="Writer--Tools" onMouseEnter={() => this.onActivateHandler("hovered")} 
                             onMouseLeave={() => this.onDeactivateHandler("hovered")} >
-                            <img src={movelogo} className="Writer--ToolsLogo" alt="move" draggable={false}
-                                onMouseDown={onactivate} onMouseUp={ondeactivate} />
-                            <img src={rotatelogo} className="Writer--ToolsLogo" alt="rotate" draggable={false}
-                                onMouseDown={() => this.onActivateHandler("pressed")} 
-                                onMouseUp={() => this.onDeactivateHandler("pressed")} />
+                            {
+                                window.innerWidth < 500 ? null :
+                                    <React.Fragment>
+                                        <img src={movelogo} className="Writer--ToolsLogo" alt="move" draggable={false}
+                                            onMouseDown={onactivate} />
+                                        <img src={rotatelogo} className="Writer--ToolsLogo" alt="rotate" draggable={false}
+                                            onMouseDown={() => this.onActivateHandler("pressed")} 
+                                            onMouseUp={() => this.onDeactivateHandler("pressed")} />
+                                    </React.Fragment>
+                            }
                             <img src={deletelogo} className="Writer--ToolsLogo" alt="delete" draggable={false} 
                                 onClick={ondelete} style={{ marginRight: '10px' }} />
                         </div> : null

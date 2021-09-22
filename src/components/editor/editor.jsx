@@ -16,6 +16,7 @@ class Editor extends React.Component{
         top: [],
         left: [],
         pressed: [],
+        coordinates: [],
         currentindex: null,
         color: '#000',
         size: '25',
@@ -37,6 +38,9 @@ class Editor extends React.Component{
         event.preventDefault();
         let newvalue = [...this.state.value];
         let newpress = [...this.state.pressed];
+        let newleft = [...this.state.left];
+        let newtop = [...this.state.top];
+        let { coordinates, currentindex } = this.state;
 
         switch (type) {
             case "size":
@@ -51,8 +55,10 @@ class Editor extends React.Component{
                 this.setState({ pressed: newpress, currentindex: index });
                 break;
             case "deactivate":
+                newleft[currentindex] = coordinates[0];
+                newtop[currentindex] = coordinates[1];
                 newpress[index] = false;
-                this.setState({ pressed: newpress, currentindex: null });
+                this.setState({ pressed: newpress, currentindex: null, coordinates: [], left: newleft, top: newtop });
                 break;
             default:
                 break;
@@ -123,13 +129,8 @@ class Editor extends React.Component{
         let { pressed, currentindex } = this.state;
 
         if (pressed[currentindex] && currentindex !== null) {
-            let newleft = [...this.state.left];
-            let newtop = [...this.state.top];
-
-            newleft[currentindex] = event.nativeEvent.offsetX;
-            newtop[currentindex] = event.nativeEvent.offsetY;
-
-            this.setState({ left: newleft, top: newtop })
+            let newcoordinates = [event.nativeEvent.offsetX, event.nativeEvent.offsetY];
+            this.setState({ coordinates: newcoordinates })
         }
     }
 
@@ -158,8 +159,7 @@ class Editor extends React.Component{
                                         <Writer style={writerstyles} current={id} key={id} top={top[id]} left={left[id]}
                                             value={val} ondelete={() => this.onDeleteHandler(id)} 
                                             ontext={(e) => this.onChangeHandler(e,"value",id)}
-                                            onactivate={(e) => this.onChangeHandler(e,"activate",id)}
-                                            ondeactivate={(e) => this.onChangeHandler(e,"deactivate",id)} />
+                                            onactivate={(e) => this.onChangeHandler(e,"activate",id)} />
                                     )
                                 })
                             }
